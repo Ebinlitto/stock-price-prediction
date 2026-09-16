@@ -8,11 +8,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 st.set_page_config(
     page_title="Stock Price Prediction",
-    page_icon="📈",
+    page_icon="",
     layout="wide"
 )
 
-st.title("📈 Stock Price Prediction Using Machine Learning")
+st.title(" Stock Price Prediction Using Machine Learning")
 st.write("A simple educational project for predicting stock closing prices.")
 
 st.sidebar.header("Project Information")
@@ -77,11 +77,11 @@ if len(data) < 20:
     st.stop()
 
 # Display dataset
-st.subheader("📊 Historical Stock Data")
+st.subheader(" Historical Stock Data")
 st.dataframe(data.tail(10), use_container_width=True)
 
 # Historical chart
-st.subheader("📈 Closing Price History")
+st.subheader(" Closing Price History")
 st.line_chart(data[close_column])
 
 # Feature engineering
@@ -125,7 +125,7 @@ mae = mean_absolute_error(y_test, predictions)
 rmse = np.sqrt(mean_squared_error(y_test, predictions))
 
 # Metrics
-st.subheader("🤖 Model Performance")
+st.subheader("Model Performance")
 
 col1, col2 = st.columns(2)
 
@@ -133,7 +133,7 @@ col1.metric("Mean Absolute Error", f"{mae:.2f}")
 col2.metric("Root Mean Squared Error", f"{rmse:.2f}")
 
 # Actual vs predicted
-st.subheader("📉 Actual vs Predicted Prices")
+st.subheader("Actual vs Predicted Prices")
 
 result = pd.DataFrame({
     "Actual Price": y_test.values,
@@ -147,7 +147,7 @@ latest_data = X.tail(1)
 
 next_prediction = model.predict(latest_data)[0]
 
-st.subheader("🔮 Next-Day Price Prediction")
+st.subheader("Next-Day Price Prediction")
 
 st.success(
     f"Predicted Closing Price: {next_prediction:.2f}"
