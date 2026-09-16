@@ -22,7 +22,10 @@ st.sidebar.info(
 )
 
 # Load the CSV file directly from your GitHub repository permanently
-url = "https://raw.githubusercontent.com/Ebinlitto/stock/main/AAPL.csv"
+url = (
+    "https://raw.githubusercontent.com/Ebinlitto/stock-price-prediction/main/AAPL.csv"
+)
+
 data = pd.read_csv(url)
 
 # Standardize column names to lowercase to prevent bugs
