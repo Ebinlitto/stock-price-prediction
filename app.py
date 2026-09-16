@@ -21,37 +21,15 @@ st.sidebar.info(
     "a Random Forest Regression model."
 )
 
-uploaded_file = st.file_uploader(
-    "Upload a stock CSV dataset",
-    type=["csv"]
-)
+# Load the CSV file directly from your GitHub repository permanently
+url = "https://raw.githubusercontent.com/Ebinlitto/stock/main/AAPL.csv"
+data = pd.read_csv(url)
 
-# Create sample data if no CSV is uploaded
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
-    st.success("Dataset uploaded successfully!")
-else:
-    np.random.seed(42)
+# Standardize column names to lowercase to prevent bugs
+data.columns = data.columns.str.lower()
 
-    dates = pd.date_range(
-        start="2020-01-01",
-        periods=500,
-        freq="D"
-    )
+st.success("Dataset loaded successfully from GitHub!")
 
-    prices = 100 + np.cumsum(
-        np.random.normal(0, 2, 500)
-    )
-
-    data = pd.DataFrame({
-        "Date": dates,
-        "Close": prices
-    })
-
-    st.info(
-        "No dataset uploaded. Showing a sample dataset. "
-        "Upload a real CSV for actual stock analysis."
-    )
 
 # Find Close column
 close_column = None
